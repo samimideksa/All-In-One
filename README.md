@@ -21,7 +21,7 @@ Three datasets are used for training the network.
 The network architecture can be found in this [paper](https://arxiv.org/abs/1611.00851). The model is built with deep convolutional layers in keras and is found in nets/model.py.
 
 ## Training
-  The model can be trained with age, gender,detection, visibility,pose, landmarks,identity, smile, and eye_glasses labels by using the following commands inside the project's directory. \
+  The model can be trained with age, gender, detection, visibility, pose, landmarks, identity, smile, and eye_glasses labels by using the following commands inside the project's directory. \
 The following code snippet is bash command to train the network in aflw dataset for face detection
 ```
 python -m train --dataset aflw --images_path /path-to-dataset-images/ \
@@ -30,7 +30,7 @@ python -m train --dataset aflw --images_path /path-to-dataset-images/ \
 ### Options
 * *--images_path - Path to dataset images*
 * *--dataset - Type of dataset to train the model. This could be imdb, wiki, celeba,yale,ck+,aflw. The layers that are going to be trained also depends on this choice.*
-* *--label - This option specifies which for which type of classification/prediction to train the model. The choices are age, gender,detection, visibility,pose, landmarks,identity, smile, and eye_glasses.*
+* *--label - This option specifies which for which type of classification/prediction to train the model. The choices are age, gender, detection, visibility, pose, landmarks, identity, smile, and eye_glasses.*
 * *--epochs.*
 * *--batch_size.*
 * *--resume - To start training from previous checkpoint if available.*
