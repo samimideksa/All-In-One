@@ -3,13 +3,22 @@ import cv2
 import dlib
 import numpy as np
 import os
+import argparse
 from keras.models import Model
 
+def get_cmd_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model_json_path", default="", type=str)
+    parser.add_argument("--model_h5_path", default="", type=str)
+    parser.add_argument("--process",default="webcam",type=str)
+    parser.add_argument("--label", default="", type=str)
+    args = parser.parse_args()
+    return args
 
 def images_demo(model,images_dir,detector):
     for imgfile in os.listdir(images_dir):
         image = cv2.imread(os.path.join(images_dir,imgfile))
-        print image.shape
+        print (image.shape)
         faces = detector(image)
         for i in range(len(faces)):
             face = faces[i]
@@ -65,7 +74,7 @@ def process_video(model, path,detector):
             age = str(int(age_estimation))
             smile = np.argmax(smile_detection)
             gender = np.argmax(gender_probablity)
-            print gender_probablity
+            print (gender_probablity)
 
             if(smile==0):
                 smile = "False"
@@ -95,7 +104,16 @@ def video_demo(model,video_path,detector):
     process_video(model,video_path,detector)
 
 def main():
-    selective_search_demo()
+    print ("loading model")
+    model  = load_model("models/allinone.json","/home/mtk/iCog/models/freeze2.h5",["age_estimation","smile", "gender_probablity"])
+    model.summary()
+    print ("loaded model")
+    detector = dlib.get_frontal_face_detector()
+    images_demo(model,"/home/samuel/dataset/DataSet/TestImages/",detector)
+    #
+    webcam_demo(model,detector)
+    video_demo(model,"/home/mtk/iCog/projects/emopy/test-videos/75Emotions.mp4",detector)
+    #selective_search_demo()
 
 if __name__ == "__main__":
     main()
