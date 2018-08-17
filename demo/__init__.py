@@ -5,7 +5,6 @@ import cv2
 import numpy as np
 import pandas as pd
 
-
 def get_layer(model,name):
     for layer in model.layers:
         if layer.name == name:
@@ -24,7 +23,7 @@ def load_model(model_json_path,model_h5_path,layer_names):
         return output
 
 def selective_search_demo():
-    dataset_dir = "/home/samuel/datasets/DataSet"
+    dataset_dir = "/home/samuel/dataset/DataSet"
     b_box = loadmat(os.path.join(dataset_dir,"BoundingBox.mat"))
     bboxesT = b_box["bboxesT"]
     bboxesTr = b_box["bboxesTr"].astype(np.uint8)

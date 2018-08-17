@@ -6,3 +6,4 @@ logs.txt
 epoch_number.json
 temp-models/*
 .idea/
+.vscode/

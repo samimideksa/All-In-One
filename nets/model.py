@@ -15,6 +15,7 @@ class AllInOneModel(object):
         self.is_built = False
         self.input_shape = input_shape
         self.model = self.build()
+        
     def build(self):
         input_layer = Input(shape=self.input_shape)
 

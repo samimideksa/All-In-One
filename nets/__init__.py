@@ -22,12 +22,14 @@ from nets.loss_functions import age_loss
 
 
 class AllInOneNetwork(object):
+    
     def __init__(self,config):
         self.config = config
         self.model = AllInOneModel(self.config.image_shape)
+        self.model.save_model_to_json("/home/samuel/Documents/All-In-One/models")
         if(config.model_weight!=None and os.path.exists(config.model_weight)):
             Log.DEBUG_OUT = True
-            Log.DEBUG("Loading model weights from '"+config.model_weight+"'")
+            Log.DEBUG("Loading model weights from '" + config.model_weight +"'")
             try:
                 self.model.model.load_weights(config.model_weight)
                 Log.DEBUG("Loaded model weights")
@@ -53,12 +55,6 @@ class AllInOneNetwork(object):
         if REMAINING_EPOCHS < 0:
             REMAINING_EPOCHS =1
 
-        #with open("logs.txt","a+") as logfile:
-        #    str_date = datetime.now().strftime("%d, %b, %Y %H:%M:%S")
-        #    logfile.write("Starting to train model\n")
-        #    logfile.write("Dataset :"+self.preprocessor.dataset_type+"\n")
-        #    logfile.write(str_date+"\n")
-        #return customCheckPoint
 
     def train_imdb_wiki(self):
         if not self.dataset.dataset_loaded:

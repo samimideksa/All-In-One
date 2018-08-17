@@ -26,6 +26,3 @@ class TestBaseProcessor(unittest.TestCase):
         self.assertEqual(os.path.exists("tests/ds/train.pkl"),True)
         self.assertEqual(os.path.exists("tests/ds/test.pkl"),True)
         self.assertEqual(os.path.exists("tests/ds/validation.pkl"),True)
-
-
-
