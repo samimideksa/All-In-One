@@ -53,8 +53,8 @@ def images_demo(model,images_dir,detector):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-def process_video(model, path,detector):
-    cap = cv2.VideoCapture(path)
+def process_video(model, video_path, detector):
+    cap = cv2.VideoCapture(video_path)
     while cap.isOpened():
         _,frame = cap.read()
         faces = detector(frame)
@@ -104,15 +104,15 @@ def video_demo(model,video_path,detector):
     process_video(model,video_path,detector)
 
 def main():
+
     print ("loading model")
-    model  = load_model("models/allinone.json","/home/mtk/iCog/models/freeze2.h5",["age_estimation","smile", "gender_probablity"])
+    model  = load_model("/home/samuel/Documents/All-In-One/models/allinone.json","/home/samuel/Documents/All-In-One/models/allinone.h5",["age_estimation","smile", "gender_probablity"])
     model.summary()
     print ("loaded model")
     detector = dlib.get_frontal_face_detector()
-    images_demo(model,"/home/samuel/dataset/DataSet/TestImages/",detector)
-    #
+    images_demo(model,"/home/samuel/Documents/All-In-One/test-images/",detector)
     webcam_demo(model,detector)
-    video_demo(model,"/home/mtk/iCog/projects/emopy/test-videos/75Emotions.mp4",detector)
+    video_demo(model,"/home/samuel/Documents/All-In-One/test-videos/75Emotions.mp4",detector)
     #selective_search_demo()
 
 if __name__ == "__main__":

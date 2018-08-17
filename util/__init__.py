@@ -64,7 +64,7 @@ class Config(object):
         else:
             self.large_model_name = large_model_name
         if small_model_name == None or small_model_name.strip() == "":
-            self.small_model_name = dataset + " -small-model"
+            self.small_model_name = dataset + "-small-model"
         else:
             self.small_model_name = small_model_name
         self.model_weight = model_weight
@@ -75,16 +75,18 @@ class Config(object):
         self.image_shape = image_shape
         self.dataset_type = DatasetType.from_string(dataset)
         self.dataset = dataset
+
     def getEpochs(self):
         return self.epochs
+
     def getBatchSize(self):
         return self.batch_size
+
     def getLearningRate(self):
         return self.lr
+        
     def getStepsPerEpoch(self):
         return self.steps_per_epoch
-
-
 
 def get_cmd_args():
     parser = argparse.ArgumentParser()

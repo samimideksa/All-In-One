@@ -28,6 +28,7 @@ class ImdbWikiDataset(Dataset):
         super(ImdbWikiDataset,self).__init__(config)
         self.labels = labels
         self.dataset=config.dataset
+
     def load_dataset(self):
         if set(self.labels).issubset(["Age","Gender"]):
             if not self.contain_dataset_files():
@@ -190,5 +191,6 @@ class ImdbWikiDataset(Dataset):
         "score":face_score,"second_face_score":second_face_score,"Age":age,"face_location":face_location})
 
         return df
+        
     def get_dataset_name(self):
         return self.dataset

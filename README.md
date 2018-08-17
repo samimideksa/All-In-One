@@ -29,7 +29,7 @@ python -m train --dataset aflw --images_path /path-to-dataset-images/ \
 ```
 ### Options
 * *--images_path - Path to dataset images*
-* *--dataset - Type of dataset to train the model. This could be imdb, wiki, celeba,yale,ck+,aflw. The layers that are going to be trained also depends on this choice.*
+* *--dataset - Type of dataset to train the model. This could be imdb, wiki, celeba, yale, ck+, aflw. The layers that are going to be trained also depends on this choice.*
 * *--label - This option specifies which for which type of classification/prediction to train the model. The choices are age, gender, detection, visibility, pose, landmarks, identity, smile, and eye_glasses.*
 * *--epochs.*
 * *--batch_size.*
@@ -48,4 +48,4 @@ python -m train --dataset aflw --images_path /path-to-dataset-images/ \
 * *Age prediction(~4% accuaracy)*
 #### Tasks remaining
 * *Use CASIA and MORPH dataset for further training the model on age, detection and gender labels.*
-* *Implement pose estimation, Landmark detection and Face recognition.* 
+* *Implement pose estimation, Landmark detection and Face recognition.*
