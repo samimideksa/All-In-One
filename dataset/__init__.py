@@ -59,7 +59,6 @@ class Dataset(object):
 
     @abstractmethod
     def load_images(self,dataframe):
-
         raise NotImplementedError("Not implemented")
 
     """This method checks the dataset directory has structure specified

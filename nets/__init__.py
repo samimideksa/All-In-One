@@ -26,12 +26,17 @@ class AllInOneNetwork(object):
     def __init__(self,config):
         self.config = config
         self.model = AllInOneModel(self.config.image_shape)
-        self.model.save_model_to_json("/home/samuel/Documents/All-In-One/models")
+        self.model.save_model_to_json("/home/samuel/projects/All-In-One/AgeModel.json")
         if(config.model_weight!=None and os.path.exists(config.model_weight)):
             Log.DEBUG_OUT = True
             Log.DEBUG("Loading model weights from '" + config.model_weight +"'")
             try:
                 self.model.model.load_weights(config.model_weight)
+                #Freeze some layers in the network
+                """
+                for layer in model.layers[:5]:
+                    layers.trainable = False
+                    """
                 Log.DEBUG("Loaded model weights")
             except:
                 Log.DEBUG("Unable to load model weight from "+config.model_weight)
@@ -102,6 +107,7 @@ class AllInOneNetwork(object):
                 else:
                     smileModel.layers[i].trainable = True
         smileModel.compile(loss = keras.losses.categorical_crossentropy,optimizer=keras.optimizers.Adam(self.learning_rate),metrics=["accuracy"])
+        #smileModel.compile(loss = keras.losses.categorical_crossentropy,optimizer=keras.optimizers.Adamax(self.learning_rate=0.002, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0),metrics=["accuracy"])
         smileModel.summary()
 
         X_test = self.dataset.test_dataset_images
@@ -139,7 +145,8 @@ class AllInOneNetwork(object):
         X_test = dataset.test_dataset_images
         X_test = X_test.reshape(-1,self.config.image_shape[0],self.config.image_shape[1],self.config.image_shape[2])
         age_test = dataset.test_dataset["Age"].as_matrix()
-        age_model.compile(loss = age_loss,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+#        age_model.compile(loss = age_loss,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        age_model.compile(loss = age_loss,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
         callbacks = [LambdaUpdateCallBack()]
         age_model.summary()
         age_model.fit_generator(dataset.age_data_genenerator(self.config.batch_size),
@@ -161,7 +168,9 @@ class AllInOneNetwork(object):
         X_test = X_test.reshape(-1,self.config.image_shape[0],self.config.image_shape[1],self.config.image_shape[2])
         gender_test = dataset.test_dataset["Gender"].as_matrix().astype(np.uint8)
         gender_test = np.eye(2)[gender_test]
-        gender_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        #gender_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        age_model.compile(loss = age_loss,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
+
         callbacks = None
         gender_model.summary()
         gender_model.fit_generator(dataset.gender_data_genenerator(self.config.batch_size),
@@ -182,7 +191,9 @@ class AllInOneNetwork(object):
         X_test = X_test.reshape(-1,self.config.image_shape[0],self.config.image_shape[1],self.config.image_shape[2])
         smile_test = dataset.test_dataset["Smiling"].as_matrix().astype(np.uint8)
         smile_test  = np.eye(2)[smile_test]
-        smile_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        #smile_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        smile_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
+
         callbacks = None
         smile_model.summary()
         smile_model.fit_generator(dataset.smile_data_generator(self.config.batch_size),
@@ -216,7 +227,7 @@ class AllInOneNetwork(object):
         X_test = X_test.reshape(-1,self.config.image_shape[0],self.config.image_shape[1],self.config.image_shape[2])
         detection_test = dataset.test_detection
         detection_test = np.eye(2)[detection_test]
-        face_detection_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        face_detection_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
         callbacks = None
         face_detection_model.summary()
         face_detection_model.fit_generator(dataset.detection_data_genenerator(self.config.batch_size),
@@ -238,7 +249,7 @@ class AllInOneNetwork(object):
         key_test = dataset.test_dataset["key_points"].as_matrix().astype(np.uint8)
 
         key_test  = np.eye(2)[pose_test]
-        pose_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        pose_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
         callbacks = None
         pose_model.summary()
         pose_model.fit_generator(dataset.key_points_data_generator(self.config.batch_size),
@@ -259,12 +270,12 @@ class AllInOneNetwork(object):
         X_test = X_test.reshape(-1,self.config.image_shape[0],self.config.image_shape[1],self.config.image_shape[2])
         key_points_visibility_test = dataset.test_dataset["key_points_visiblity"].as_matrix().astype(np.uint8)
         key_points_visibility_test  = np.eye(2)[key_points_visibility_test]
-        pose_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        pose_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
         callbacks = None
         pose_model.summary()
         pose_model.fit_generator(dataset.smile_data_generator(self.config.batch_size),
                 epochs = self.config.epochs,
-                steps_per_epoch = self.config.steps_per_epoch,
+                stage_modeleps_per_epoch = self.config.steps_per_epoch,
                 validation_data = [X_test,key_points_visibility_test],
                 callbacks = callbacks
         )
@@ -302,7 +313,7 @@ class AllInOneNetwork(object):
         face_reco_test = dataset.test_dataset["face_reco_test"].as_matrix().astype(np.uint8)
 
         face_reco_test  = np.eye(2)[face_reco_test]
-        pose_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
+        pose_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
         callbacks = None
         pose_model.summary()
         pose_model.fit_generator(dataset.smile_data_generator(self.config.batch_size),
