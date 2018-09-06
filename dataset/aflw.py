@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 from loggers import Log
 
-
 class AflwDataset(Dataset):
     """Class that abstracts Aflw dataset.
     """
@@ -46,9 +45,9 @@ class AflwDataset(Dataset):
         img,scale = self.resize_down_image(img,max_img_size)
         dlib.find_candidate_object_locations(img,cand_rects,min_size=min_size)
         rects = [(int(crect.left() * scale),
-             int(crect.top()* scale),
-             int(crect.right()* scale),
-             int(crect.bottom()* scale),
+             int(crect.top() * scale),
+             int(crect.right() * scale),
+             int(crect.bottom() * scale),
 
             ) for crect in cand_rects]
         for rect in rects:
@@ -229,6 +228,7 @@ class Rect(object):
         area2 = width2 * height2
 
         return area1+area2 - self.rect_intersection(rect1,rect2)
+
     def iou(self,rect):
         pass
     def __str__(self):

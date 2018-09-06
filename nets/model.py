@@ -15,7 +15,7 @@ class AllInOneModel(object):
         self.is_built = False
         self.input_shape = input_shape
         self.model = self.build()
-        
+
     def build(self):
         input_layer = Input(shape=self.input_shape)
 
@@ -72,7 +72,7 @@ class AllInOneModel(object):
         gender_probablity2 = Dense(128,activation="relu")(gender_drop1)
         gender_drop2 = Dropout(0.2)(gender_probablity2)
         gender_probablity3 = Dense(2,activation="softmax",name="gender_probablity")(gender_drop2)
-
+        # subject independent layers
         # Young
         young_1 = Dense(1024,activation="relu")(conv6_out_pool_flatten)
         young_drop1 = Dropout(0.2)(young_1)
@@ -117,6 +117,11 @@ class AllInOneModel(object):
         mouse_slightly_open_drop = Dropout(0.2)(mouse_slightly_open1)
         mouse_slightly_open2 = Dense(2,activation="softmax",name="mouse_slightly_open")(mouse_slightly_open_drop)
 
+
+        # emotion recognition
+        emotion_recognition = Dense(512, activation="relu")(merge_1_dropout)
+        emotion_recognition_drop = Dropout(0.2)(emotion_recognition)
+        emotion_recognition2 = Dense(2, activation="softmax", name="emotion"(emotion_recognition_drop))
         model = Model(inputs=input_layer,
                         outputs=[detection_probability2,key_point_visibility_2, key_points2,pose2,smile2,
                                 gender_probablity3,age_estimation4,face_reco,young_3,eye_glasses2,

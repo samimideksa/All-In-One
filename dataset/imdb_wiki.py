@@ -109,7 +109,7 @@ class ImdbWikiDataset(Dataset):
 
     def generator(self,batch_size=32):
         while True:
-            indexes = np.arange(len(self.train_dataset))
+            indexes = np.arrange(len(self.train_dataset))
             np.random.shuffle(indexes)
             for i in range(0,len(indexes)-batch_size,batch_size):
                 current_indexes = indexes[i:i+batch_size]
@@ -124,7 +124,7 @@ class ImdbWikiDataset(Dataset):
 
     def age_data_genenerator(self,batch_size):
         while True:
-            indexes = np.arange(len(self.train_dataset))
+            indexes = np.arrange(len(self.train_dataset))
             np.random.shuffle(indexes)
             for i in range(0,len(indexes)-batch_size,batch_size):
                 current_indexes = indexes[i:i+batch_size]
@@ -137,7 +137,7 @@ class ImdbWikiDataset(Dataset):
 
     def gender_data_genenerator(self,batch_size):
         while True:
-            indexes = np.arange(len(self.train_dataset))
+            indexes = np.arrange(len(self.train_dataset))
             np.random.shuffle(indexes)
             for i in range(0,len(indexes)-batch_size,batch_size):
                 current_indexes = indexes[i:i+batch_size]

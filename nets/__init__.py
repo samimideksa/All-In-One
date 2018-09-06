@@ -16,7 +16,7 @@ from dataset.adience import AdienceDataset
 import os
 from loggers import Log
 from nets.model import AllInOneModel
-from   util import DatasetType
+from util import DatasetType
 from nets.callbacks import LambdaUpdateCallBack,CustomModelCheckPoint
 from nets.loss_functions import age_loss
 
@@ -26,7 +26,8 @@ class AllInOneNetwork(object):
     def __init__(self,config):
         self.config = config
         self.model = AllInOneModel(self.config.image_shape)
-        self.model.save_model_to_json("/home/samuel/Documents/All-In-One/models")
+        self.model.save_model_to_json("/home/samuel/Documents/All-In-One/models/")
+        self.model.model.save_weights("home/samuel/Documents/All-In-One/models/")
         if(config.model_weight!=None and os.path.exists(config.model_weight)):
             Log.DEBUG_OUT = True
             Log.DEBUG("Loading model weights from '" + config.model_weight +"'")

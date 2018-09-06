@@ -9,7 +9,7 @@ from keras.models import Model
 def get_cmd_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_json_path", default="", type=str)
-    parser.add_argument("--model_h5_path", default="", type=str)
+    parser.add_argument("--model_wights_path", default="", type=str)
     parser.add_argument("--process",default="webcam",type=str)
     parser.add_argument("--label", default="", type=str)
     args = parser.parse_args()

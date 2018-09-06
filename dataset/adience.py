@@ -275,6 +275,7 @@ class Rect(object):
         y_overlap = max(0, min(rect1[3], rect2[3]) - max(rect1[1], rect2[1]));
         overlapArea = x_overlap * y_overlap;
         return overlapArea
+        
     def union(self,rect):
         assert rect1.shape == (4,) , "rect1 shape should be (4,) and it is "+str(rect1.shape)
         assert rect2.shape == (4,) , "rect2 shape should be (4,) and it is "+str(rect2.shape)
