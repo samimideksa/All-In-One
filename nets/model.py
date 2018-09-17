@@ -89,7 +89,7 @@ class AllInOneModel(object):
         detection_probability_drop =  Dropout(0.2)(detection_probability1)
         detection_probability2 = Dense(2,activation="softmax",name="detection_probablity")(detection_probability_drop)
 
-        # key points(21) visibility probablity
+        # visibility probability
         key_point_visibility_1 = Dense(512,activation="relu")(merge_1_dropout)
         key_point_visibility_drop = Dropout(0.2)(key_point_visibility_1)
         key_point_visibility_2 = Dense(21,activation="linear",name="key_points_visibility")(key_point_visibility_drop)
@@ -105,12 +105,12 @@ class AllInOneModel(object):
         pose_drop = Dropout(0.2)(pose1)
         pose2 = Dense(3,activation="linear",name="pose")(pose_drop)
 
-        # probablity face being smile face
+        # probablity of face being smile face
         smile1 = Dense(512,activation="relu")(merge_1_dropout)
         smile_drop = Dropout(0.2)(smile1)
         smile2 = Dense(2,activation="softmax",name="smile")(smile_drop)
 
-        # probablity face being eye glasses face
+        # probablity of face being eye glasses face
         eye_glasses1 = Dense(512,activation="relu")(merge_1_dropout)
         eye_glasses_drop = Dropout(0.2)(eye_glasses1)
         eye_glasses2 = Dense(2,activation="softmax",name="eye_glasses")(eye_glasses_drop)
@@ -121,11 +121,14 @@ class AllInOneModel(object):
         mouse_slightly_open2 = Dense(2,activation="softmax",name="mouse_slightly_open")(mouse_slightly_open_drop)
 
         # emotion recognition module
+        emotion_recognition = Dense(512,activation="relu")(merge_1_dropout)
+        emotion_recognition_drop = Dropout(0.2)(emotion_recognition)
+        emotion_recognition2 = Dense(2,activation="softmax", name="emotion_recognition")(emotion_recognition_drop)
         
         model = Model(inputs=input_layer,
                         outputs=[detection_probability2,key_point_visibility_2, key_points2,pose2,smile2,
                                 gender_probablity3,age_estimation4,face_reco,young_3,eye_glasses2,
-                                mouse_slightly_open2
+                                mouse_slightly_open2, emotion_recognition2
                                 ])
 
         self.is_built = True;
