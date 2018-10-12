@@ -126,6 +126,10 @@ class AllInOneNetwork(object):
         self.model.save_weights("models/"+self.large_model_name+".h5")
         smileModel.save_weights("models/"+self.small_model_name+".h5")
 
+    def train_emotion_network(self):
+        if not self.dataset.dataset_loaded:
+            self.dataset.load_dataset()
+
     def save_model(self,model,score):
         self.model.model.save_weights("models/"+self.config.large_model_name+".h5")
         model.save_weights("models/"+self.config.small_model_name+".h5")
@@ -192,7 +196,7 @@ class AllInOneNetwork(object):
         smile_test = dataset.test_dataset["Smiling"].as_matrix().astype(np.uint8)
         smile_test  = np.eye(2)[smile_test]
         #smile_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
-        smile_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adamax(self.config.getLearningRate()),metrics=["accuracy"])
+        smile_model.compile(loss = keras.losses.binary_crossentropy,optimizer=keras.optimizers.Adam(self.config.getLearningRate()),metrics=["accuracy"])
 
         callbacks = None
         smile_model.summary()
@@ -215,6 +219,8 @@ class AllInOneNetwork(object):
             return AflwDataset(self.config)
         elif self.config.dataset.lower() == "adience":
             return AdienceDataset(self.config)
+        elif self.config.dataset.lower() == "emotion":
+            return EmotionDataset(self.config)
         else:
             raise NotImplementedError("Not implemented for "+str(config.dataset))
 
@@ -343,5 +349,7 @@ class AllInOneNetwork(object):
             self.train_face_recognition_network()
         elif label == "pose":
             self.train_pose_network()
+        elif label == "emotion_recognition2":
+            self.train_emotion_recognition()
         else:
             raise NotImplemented("Training method not implemented for "+str(label))

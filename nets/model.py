@@ -134,6 +134,7 @@ class AllInOneModel(object):
         self.is_built = True;
         return model
 
+    #saves model to json file 
     def save_model_to_json(self,path):
         model_json = self.model.to_json()
         with open(path,"w+") as json_file:
@@ -144,7 +145,7 @@ class AllInOneModel(object):
         for layer in self.model.layers:
             if layer.name == name:
                 return layer
-        raise Exception("Layer with name "+name + " does not exist")
+        raise Exception("Layer with name "+ name + " does not exist")
 
     """Get model which have output layer given by labels.
     Parameters
@@ -153,17 +154,17 @@ class AllInOneModel(object):
         list of output labels. Elements of the list should be one or more
         of ["detection_probablity","kpoints_visibility","key_points","pose","smile",
             "gender_probablity","age_estimation","face_reco","is_young","eye_glasses",
-            "mouse_slightly_open"]
+            "mouse_slightly_open","emotion_recognition2"]
 
     """
 
     def get_model_with_labels(self,labels):
         all_lists = ["detection_probablity","kpoints_visibility","key_points","pose","smile",
             "gender_probablity","age_estimation","face_reco","is_young","eye_glasses",
-            "mouse_slightly_open"]
-        assert type(labels) == list, " argment should be list type"
+            "mouse_slightly_open","emotion_recognition2"]
+        assert type(labels) == list, " argument should be list type"
         assert not(labels is None or len(labels)==0), "Labels should not be empty"
-        assert set(labels).issubset(all_lists), str(labels)+" contains lists which are not in "+ str(all_lists)
+        assert set(labels).issubset(all_lists), str(labels) + "contains lists which are not in" + str(all_lists)
 
         input_layer = self.model.inputs
         output_layers = []

@@ -10,11 +10,11 @@ class DatasetType(object):
     ds_types = {
         "imdb":0,   # gender and age dataset
         "wiki":1,   # gender and age dataset
-        "celeba":2, # gender,identity and smile dataset
-        "celeb_a":2,# gender,identity and smile dataset
-        "yale":3,   # pose,identity and illumunation dataset
-        "ck+":4,    # emotion,identity and dataset
-        "aflw":5,   # pose, key points,detection
+        "celeba":2, # gender, identity and smile dataset
+        "celeb_a":2,# gender, identity and smile dataset
+        "yale":3,   # pose, identity and illumination dataset
+        "ck+":4,    # emotion, identity and dataset
+        "aflw":5,   # pose, key points, detection
         "test":6,
         "adience":7,   # dataset used solely for testing the methods of classes. It is found inside tests/ds/ folder.
     }
