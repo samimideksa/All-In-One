@@ -19,10 +19,41 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='all_in_one.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x10\x61ll_in_one.proto\"2\n\x0f\x41llInOneRequest\x12\r\n\x05image\x18\x01 \x01(\t\x12\x10\n\x08\x46ileType\x18\x02 \x01(\t\"[\n\x10\x41llInOneResponse\x12\x0e\n\x06gender\x18\x01 \x03(\t\x12\r\n\x05smile\x18\x02 \x03(\t\x12\x0b\n\x03\x41ge\x18\x03 \x03(\x05\x12\x1b\n\x05\x62_box\x18\x04 \x03(\x0b\x32\x0c.BoundingBox\"\x1b\n\x08ImageRGB\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\t\"9\n\x0b\x42oundingBox\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\x12\t\n\x01w\x18\x03 \x01(\x05\x12\t\n\x01h\x18\x04 \x01(\x05\"\x1f\n\x07Point2D\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"1\n\x0e\x46\x61\x63\x65\x44\x65tections\x12\x1f\n\tface_bbox\x18\x01 \x03(\x0b\x32\x0c.BoundingBox\"@\n\rFaceLandmarks\x12\x16\n\x0elandmark_model\x18\x01 \x01(\t\x12\x17\n\x05point\x18\x02 \x03(\x0b\x32\x08.Point2D\"p\n\x18\x46\x61\x63\x65LandmarkDescriptions\x12\x16\n\x0elandmark_model\x18\x01 \x01(\t\x12\x1c\n\x14landmark_description\x18\x02 \x03(\t\x12\x1e\n\x0clandmark_avg\x18\x03 \x03(\x0b\x32\x08.Point2D\">\n\x12\x46\x61\x63\x65LandmarkModels\x12(\n\x05model\x18\x01 \x03(\x0b\x32\x19.FaceLandmarkDescriptions2=\n\x08\x41llInOne\x12\x31\n\x08\x41llInOne\x12\x10.AllInOneRequest\x1a\x11.AllInOneResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x10\x61ll_in_one.proto\":\n\x13\x46\x61\x63\x65\x41lignmentHeader\x12#\n\rsource_bboxes\x18\x01 \x03(\x0b\x32\x0c.BoundingBox\"2\n\x0f\x41llInOneRequest\x12\r\n\x05image\x18\x01 \x01(\t\x12\x10\n\x08\x46ileType\x18\x02 \x01(\t\"[\n\x10\x41llInOneResponse\x12\x0e\n\x06gender\x18\x01 \x03(\t\x12\r\n\x05smile\x18\x02 \x03(\t\x12\x0b\n\x03\x41ge\x18\x03 \x03(\x05\x12\x1b\n\x05\x62_box\x18\x04 \x03(\x0b\x32\x0c.BoundingBox\"s\n\x14\x46\x61\x63\x65\x41lignmentRequest\x12&\n\x06header\x18\x01 \x01(\x0b\x32\x14.FaceAlignmentHeaderH\x00\x12 \n\x0bimage_chunk\x18\x02 \x01(\x0b\x32\t.ImageRGBH\x00\x42\x11\n\x0fheader_or_chunk\"\x1d\n\x1b\x46\x61\x63\x65\x41lignmentResponseHeader\"|\n\x15\x46\x61\x63\x65\x41lignmentResponse\x12.\n\x06header\x18\x01 \x01(\x0b\x32\x1c.FaceAlignmentResponseHeaderH\x00\x12 \n\x0bimage_chunk\x18\x02 \x01(\x0b\x32\t.ImageRGBH\x00\x42\x11\n\x0fheader_or_chunk\"\x1b\n\x08ImageRGB\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\t\"9\n\x0b\x42oundingBox\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\x12\t\n\x01w\x18\x03 \x01(\x05\x12\t\n\x01h\x18\x04 \x01(\x05\"\x1f\n\x07Point2D\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"1\n\x0e\x46\x61\x63\x65\x44\x65tections\x12\x1f\n\tface_bbox\x18\x01 \x03(\x0b\x32\x0c.BoundingBox\"@\n\rFaceLandmarks\x12\x16\n\x0elandmark_model\x18\x01 \x01(\t\x12\x17\n\x05point\x18\x02 \x03(\x0b\x32\x08.Point2D\"p\n\x18\x46\x61\x63\x65LandmarkDescriptions\x12\x16\n\x0elandmark_model\x18\x01 \x01(\t\x12\x1c\n\x14landmark_description\x18\x02 \x03(\t\x12\x1e\n\x0clandmark_avg\x18\x03 \x03(\x0b\x32\x08.Point2D\">\n\x12\x46\x61\x63\x65LandmarkModels\x12(\n\x05model\x18\x01 \x03(\x0b\x32\x19.FaceLandmarkDescriptions2\x7f\n\x08\x41llInOne\x12\x31\n\x08\x41llInOne\x12\x10.AllInOneRequest\x1a\x11.AllInOneResponse\"\x00\x12@\n\tAlignFace\x12\x15.FaceAlignmentRequest\x1a\x16.FaceAlignmentResponse\"\x00(\x01\x30\x01\x62\x06proto3')
 )
 
 
+
+
+_FACEALIGNMENTHEADER = _descriptor.Descriptor(
+  name='FaceAlignmentHeader',
+  full_name='FaceAlignmentHeader',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='source_bboxes', full_name='FaceAlignmentHeader.source_bboxes', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=20,
+  serialized_end=78,
+)
 
 
 _ALLINONEREQUEST = _descriptor.Descriptor(
@@ -58,8 +89,8 @@ _ALLINONEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20,
-  serialized_end=70,
+  serialized_start=80,
+  serialized_end=130,
 )
 
 
@@ -110,8 +141,114 @@ _ALLINONERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=72,
-  serialized_end=163,
+  serialized_start=132,
+  serialized_end=223,
+)
+
+
+_FACEALIGNMENTREQUEST = _descriptor.Descriptor(
+  name='FaceAlignmentRequest',
+  full_name='FaceAlignmentRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='header', full_name='FaceAlignmentRequest.header', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='image_chunk', full_name='FaceAlignmentRequest.image_chunk', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='header_or_chunk', full_name='FaceAlignmentRequest.header_or_chunk',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=225,
+  serialized_end=340,
+)
+
+
+_FACEALIGNMENTRESPONSEHEADER = _descriptor.Descriptor(
+  name='FaceAlignmentResponseHeader',
+  full_name='FaceAlignmentResponseHeader',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=342,
+  serialized_end=371,
+)
+
+
+_FACEALIGNMENTRESPONSE = _descriptor.Descriptor(
+  name='FaceAlignmentResponse',
+  full_name='FaceAlignmentResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='header', full_name='FaceAlignmentResponse.header', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='image_chunk', full_name='FaceAlignmentResponse.image_chunk', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='header_or_chunk', full_name='FaceAlignmentResponse.header_or_chunk',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=373,
+  serialized_end=497,
 )
 
 
@@ -141,8 +278,8 @@ _IMAGERGB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=165,
-  serialized_end=192,
+  serialized_start=499,
+  serialized_end=526,
 )
 
 
@@ -193,8 +330,8 @@ _BOUNDINGBOX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=194,
-  serialized_end=251,
+  serialized_start=528,
+  serialized_end=585,
 )
 
 
@@ -231,8 +368,8 @@ _POINT2D = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=253,
-  serialized_end=284,
+  serialized_start=587,
+  serialized_end=618,
 )
 
 
@@ -262,8 +399,8 @@ _FACEDETECTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=286,
-  serialized_end=335,
+  serialized_start=620,
+  serialized_end=669,
 )
 
 
@@ -300,8 +437,8 @@ _FACELANDMARKS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=337,
-  serialized_end=401,
+  serialized_start=671,
+  serialized_end=735,
 )
 
 
@@ -345,8 +482,8 @@ _FACELANDMARKDESCRIPTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=403,
-  serialized_end=515,
+  serialized_start=737,
+  serialized_end=849,
 )
 
 
@@ -376,17 +513,38 @@ _FACELANDMARKMODELS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=517,
-  serialized_end=579,
+  serialized_start=851,
+  serialized_end=913,
 )
 
+_FACEALIGNMENTHEADER.fields_by_name['source_bboxes'].message_type = _BOUNDINGBOX
 _ALLINONERESPONSE.fields_by_name['b_box'].message_type = _BOUNDINGBOX
+_FACEALIGNMENTREQUEST.fields_by_name['header'].message_type = _FACEALIGNMENTHEADER
+_FACEALIGNMENTREQUEST.fields_by_name['image_chunk'].message_type = _IMAGERGB
+_FACEALIGNMENTREQUEST.oneofs_by_name['header_or_chunk'].fields.append(
+  _FACEALIGNMENTREQUEST.fields_by_name['header'])
+_FACEALIGNMENTREQUEST.fields_by_name['header'].containing_oneof = _FACEALIGNMENTREQUEST.oneofs_by_name['header_or_chunk']
+_FACEALIGNMENTREQUEST.oneofs_by_name['header_or_chunk'].fields.append(
+  _FACEALIGNMENTREQUEST.fields_by_name['image_chunk'])
+_FACEALIGNMENTREQUEST.fields_by_name['image_chunk'].containing_oneof = _FACEALIGNMENTREQUEST.oneofs_by_name['header_or_chunk']
+_FACEALIGNMENTRESPONSE.fields_by_name['header'].message_type = _FACEALIGNMENTRESPONSEHEADER
+_FACEALIGNMENTRESPONSE.fields_by_name['image_chunk'].message_type = _IMAGERGB
+_FACEALIGNMENTRESPONSE.oneofs_by_name['header_or_chunk'].fields.append(
+  _FACEALIGNMENTRESPONSE.fields_by_name['header'])
+_FACEALIGNMENTRESPONSE.fields_by_name['header'].containing_oneof = _FACEALIGNMENTRESPONSE.oneofs_by_name['header_or_chunk']
+_FACEALIGNMENTRESPONSE.oneofs_by_name['header_or_chunk'].fields.append(
+  _FACEALIGNMENTRESPONSE.fields_by_name['image_chunk'])
+_FACEALIGNMENTRESPONSE.fields_by_name['image_chunk'].containing_oneof = _FACEALIGNMENTRESPONSE.oneofs_by_name['header_or_chunk']
 _FACEDETECTIONS.fields_by_name['face_bbox'].message_type = _BOUNDINGBOX
 _FACELANDMARKS.fields_by_name['point'].message_type = _POINT2D
 _FACELANDMARKDESCRIPTIONS.fields_by_name['landmark_avg'].message_type = _POINT2D
 _FACELANDMARKMODELS.fields_by_name['model'].message_type = _FACELANDMARKDESCRIPTIONS
+DESCRIPTOR.message_types_by_name['FaceAlignmentHeader'] = _FACEALIGNMENTHEADER
 DESCRIPTOR.message_types_by_name['AllInOneRequest'] = _ALLINONEREQUEST
 DESCRIPTOR.message_types_by_name['AllInOneResponse'] = _ALLINONERESPONSE
+DESCRIPTOR.message_types_by_name['FaceAlignmentRequest'] = _FACEALIGNMENTREQUEST
+DESCRIPTOR.message_types_by_name['FaceAlignmentResponseHeader'] = _FACEALIGNMENTRESPONSEHEADER
+DESCRIPTOR.message_types_by_name['FaceAlignmentResponse'] = _FACEALIGNMENTRESPONSE
 DESCRIPTOR.message_types_by_name['ImageRGB'] = _IMAGERGB
 DESCRIPTOR.message_types_by_name['BoundingBox'] = _BOUNDINGBOX
 DESCRIPTOR.message_types_by_name['Point2D'] = _POINT2D
@@ -395,6 +553,13 @@ DESCRIPTOR.message_types_by_name['FaceLandmarks'] = _FACELANDMARKS
 DESCRIPTOR.message_types_by_name['FaceLandmarkDescriptions'] = _FACELANDMARKDESCRIPTIONS
 DESCRIPTOR.message_types_by_name['FaceLandmarkModels'] = _FACELANDMARKMODELS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+FaceAlignmentHeader = _reflection.GeneratedProtocolMessageType('FaceAlignmentHeader', (_message.Message,), dict(
+  DESCRIPTOR = _FACEALIGNMENTHEADER,
+  __module__ = 'all_in_one_pb2'
+  # @@protoc_insertion_point(class_scope:FaceAlignmentHeader)
+  ))
+_sym_db.RegisterMessage(FaceAlignmentHeader)
 
 AllInOneRequest = _reflection.GeneratedProtocolMessageType('AllInOneRequest', (_message.Message,), dict(
   DESCRIPTOR = _ALLINONEREQUEST,
@@ -409,6 +574,27 @@ AllInOneResponse = _reflection.GeneratedProtocolMessageType('AllInOneResponse', 
   # @@protoc_insertion_point(class_scope:AllInOneResponse)
   ))
 _sym_db.RegisterMessage(AllInOneResponse)
+
+FaceAlignmentRequest = _reflection.GeneratedProtocolMessageType('FaceAlignmentRequest', (_message.Message,), dict(
+  DESCRIPTOR = _FACEALIGNMENTREQUEST,
+  __module__ = 'all_in_one_pb2'
+  # @@protoc_insertion_point(class_scope:FaceAlignmentRequest)
+  ))
+_sym_db.RegisterMessage(FaceAlignmentRequest)
+
+FaceAlignmentResponseHeader = _reflection.GeneratedProtocolMessageType('FaceAlignmentResponseHeader', (_message.Message,), dict(
+  DESCRIPTOR = _FACEALIGNMENTRESPONSEHEADER,
+  __module__ = 'all_in_one_pb2'
+  # @@protoc_insertion_point(class_scope:FaceAlignmentResponseHeader)
+  ))
+_sym_db.RegisterMessage(FaceAlignmentResponseHeader)
+
+FaceAlignmentResponse = _reflection.GeneratedProtocolMessageType('FaceAlignmentResponse', (_message.Message,), dict(
+  DESCRIPTOR = _FACEALIGNMENTRESPONSE,
+  __module__ = 'all_in_one_pb2'
+  # @@protoc_insertion_point(class_scope:FaceAlignmentResponse)
+  ))
+_sym_db.RegisterMessage(FaceAlignmentResponse)
 
 ImageRGB = _reflection.GeneratedProtocolMessageType('ImageRGB', (_message.Message,), dict(
   DESCRIPTOR = _IMAGERGB,
@@ -467,8 +653,8 @@ _ALLINONE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=581,
-  serialized_end=642,
+  serialized_start=915,
+  serialized_end=1042,
   methods=[
   _descriptor.MethodDescriptor(
     name='AllInOne',
@@ -477,6 +663,15 @@ _ALLINONE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_ALLINONEREQUEST,
     output_type=_ALLINONERESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AlignFace',
+    full_name='AllInOne.AlignFace',
+    index=1,
+    containing_service=None,
+    input_type=_FACEALIGNMENTREQUEST,
+    output_type=_FACEALIGNMENTRESPONSE,
     options=None,
   ),
 ])

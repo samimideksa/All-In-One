@@ -1,5 +1,5 @@
 *.pyc
-models/*
+models/*.h5
 logs/*
 log.txt
 logs.txt
@@ -9,3 +9,6 @@ temp-models/*
 .vscode/
 hooks/
 imgs/
+.idea
+.vscode
+models/models/*.h5

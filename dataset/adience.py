@@ -13,7 +13,6 @@ class AdienceDataset(Dataset):
     """
 
     def __init__(self,config):
-        # self.conn = sqlite3.connect("/home/mtk/dataset/aflw-files/aflw/data/aflw.sqlite")
         super(AdienceDataset,self).__init__(config)
 
     """ method that resizes image to the same resolution

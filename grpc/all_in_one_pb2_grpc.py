@@ -19,6 +19,11 @@ class AllInOneStub(object):
         request_serializer=all__in__one__pb2.AllInOneRequest.SerializeToString,
         response_deserializer=all__in__one__pb2.AllInOneResponse.FromString,
         )
+    self.AlignFace = channel.stream_stream(
+        '/AllInOne/AlignFace',
+        request_serializer=all__in__one__pb2.FaceAlignmentRequest.SerializeToString,
+        response_deserializer=all__in__one__pb2.FaceAlignmentResponse.FromString,
+        )
 
 
 class AllInOneServicer(object):
@@ -32,6 +37,13 @@ class AllInOneServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def AlignFace(self, request_iterator, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_AllInOneServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -39,6 +51,11 @@ def add_AllInOneServicer_to_server(servicer, server):
           servicer.AllInOne,
           request_deserializer=all__in__one__pb2.AllInOneRequest.FromString,
           response_serializer=all__in__one__pb2.AllInOneResponse.SerializeToString,
+      ),
+      'AlignFace': grpc.stream_stream_rpc_method_handler(
+          servicer.AlignFace,
+          request_deserializer=all__in__one__pb2.FaceAlignmentRequest.FromString,
+          response_serializer=all__in__one__pb2.FaceAlignmentResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

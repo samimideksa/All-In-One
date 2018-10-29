@@ -1,7 +1,15 @@
 syntax = "proto3";
 
+message FaceAlignmentHeader {
+    repeated BoundingBox   source_bboxes = 1;
+    // DLib can't currently allow arbitrary alignments
+    //repeated FaceLandmarks source = 2;
+    //FaceLandmarks target = 3;
+}
+
 service AllInOne {
 	rpc AllInOne(AllInOneRequest) returns (AllInOneResponse){}
+	//rpc AlignFace(stream FaceAlignmentRequest) returns (stream FaceAlignmentResponse){}
 }
 
 message AllInOneRequest {
@@ -10,15 +18,28 @@ message AllInOneRequest {
 }
 
 message AllInOneResponse {
-//	repeated service allinone {
-//		string gender = 1;
-//		string smile = 2;
-//		int32 Age = 3;
-//	} = 1;
 	repeated string gender = 1;
 	repeated string smile = 2;
 	repeated int32 Age = 3;
-	repeated BoundingBox b_box= 4;
+	repeated BoundingBox b_box = 4;
+}
+
+message FaceAlignmentRequest {
+    oneof header_or_chunk {
+        FaceAlignmentHeader header = 1;
+        ImageRGB image_chunk = 2;
+    }
+}
+
+message FaceAlignmentResponseHeader {
+
+}
+
+message FaceAlignmentResponse {
+    oneof header_or_chunk {
+        FaceAlignmentResponseHeader header = 1;
+        ImageRGB image_chunk = 2;
+    }
 }
 
 message ImageRGB {

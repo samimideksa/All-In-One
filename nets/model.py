@@ -1,4 +1,3 @@
-
 import keras
 
 from keras.layers import Input,Conv2D,MaxPooling2D,Dropout,Dense,Flatten,concatenate,Layer
@@ -8,7 +7,7 @@ from keras import backend as K
 
 from sklearn.model_selection import train_test_split
 import json
-from nets.layers import RoundLayer
+#from nets.layers import RoundLayer
 
 class AllInOneModel(object):
     def __init__(self,input_shape):

@@ -104,16 +104,15 @@ def video_demo(model,video_path,detector):
     process_video(model,video_path,detector)
 
 def main():
-
-    print ("loading model")
-    model  = load_model("/home/samuel/Documents/All-In-One/models/allinone.json","/home/samuel/Documents/All-In-One/models/allinone.h5",["age_estimation","smile", "gender_probablity"])
-    model.summary()
-    print ("loaded model")
-    detector = dlib.get_frontal_face_detector()
-    images_demo(model,"/home/samuel/Documents/All-In-One/test-images/",detector)
-    webcam_demo(model,detector)
-    video_demo(model,"/home/samuel/Documents/All-In-One/test-videos/75Emotions.mp4",detector)
-    #selective_search_demo()
+    #print ("loading model")
+    #model  = load_model("/home/samuel/Documents/All-In-One/models/allinone.json","/home/samuel/Documents/All-In-One/models/allinone.h5",["age_estimation","smile", "gender_probablity"])
+    #model.summary()
+    #print ("loaded model")
+    #detector = dlib.get_frontal_face_detector()
+    #images_demo(model,"/home/samuel/Documents/All-In-One/test-images/",detector)
+    #webcam_demo(model,detector)
+    #video_demo(model,"/home/samuel/Documents/All-In-One/test-videos/75Emotions.mp4",detector)
+    selective_search_demo()
 
 if __name__ == "__main__":
     main()
