@@ -12,3 +12,8 @@ imgs/
 .idea
 .vscode
 models/models/*.h5
+grpc/test/test_images/
+grpc/test/test_videos/
+grpc/*.jpg
+grpc/*.png
+allinonemodels/
