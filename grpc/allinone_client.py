@@ -8,6 +8,7 @@ import os
 import cv2 
 import numpy as np
 import pandas as pd
+import dlib
 #import .test.test_images as ti
 from test import pre_calculated_faces
 import grpc
@@ -95,6 +96,14 @@ def run():
 if __name__ == '__main__':
     #imagetopy('adele_2016.jpg', 'decoded1.py')
     #pytoimage('decoded')
-    selective_search_demo()
+    model  = load_model("/home/samuel/projects/All-In-One/models/allinone.json","/home/samuel/projects/All-In-One/models/freeze2.h5",["age_estimation","smile", "gender_probablity"])
+    model.summary()
+    detector = dlib.get_frontal_face_detector()
+    #image demo
+    images_demo(model,"/home/samuel/projects/All-In-One/grpc/test/test_images/",detector)
+    #video demo
+    #webcam_demo(model,detector)
+    video_demo(model,"/home/samuel/projects/All-In-One/grpc/test/test_videos/video_demo3.mp4",detector)
+    #selective_search_demo()
     run()   
     

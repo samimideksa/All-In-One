@@ -89,7 +89,7 @@ class AflwDataset(Dataset):
             self.test_dataset = self.test_dataset[:1000]
             self.validation_dataset = self.validation_dataset[:100]
             Log.DEBUG_OUT = True
-            Log.DEBUG_OUT =False
+            Log.DEBUG_OUT = False
             self.test_dataset_images = self.load_images(self.test_dataset).astype(np.float32)/255
             Log.DEBUG_OUT = True
             Log.DEBUG("Loading validation images")

@@ -19,14 +19,15 @@ from nets.model import AllInOneModel
 from   util import DatasetType
 from nets.callbacks import LambdaUpdateCallBack,CustomModelCheckPoint
 from nets.loss_functions import age_loss
-
+from dataset import casia, adience, aflw, celeba, EmotionDataset, imdb_wiki
+from dataset.casia import CasiaDataset
 
 class AllInOneNetwork(object):
     
     def __init__(self,config):
         self.config = config
         self.model = AllInOneModel(self.config.image_shape)
-        self.model.save_model_to_json("/home/samuel/projects/All-In-One/AgeModel.json")
+        self.model.save_model_to_json("/home/samuel/projects/All-In-One/allinonemodels/allinone.json")
         if(config.model_weight!=None and os.path.exists(config.model_weight)):
             Log.DEBUG_OUT = True
             Log.DEBUG("Loading model weights from '" + config.model_weight +"'")
@@ -126,9 +127,42 @@ class AllInOneNetwork(object):
         self.model.save_weights("models/"+self.large_model_name+".h5")
         smileModel.save_weights("models/"+self.small_model_name+".h5")
 
+    def train_casia(self):
+        if not self.dataset.dataset_loaded:
+            dataset.load_dataset()
+        
+        assert self.dataset.dataset_loaded == True, "dataset is not loaded."
+        faceRecognitionModel = self.get_model_with_labels["face_reco"]
+        if self.freeze:
+            for i in range(len(faceRecognitionModel.layers)):
+                if faceRecognitionModel.layers[i].name not in ["smile" ,"dense_14"]:
+                    faceRecognitionModel.layers[i].trainable=False
+                else:
+                    faceRecognitionModel.layers[i].trainable = True
+        faceRecognitionModel.compile(loss = keras.losses.categorical_crossentropy,optimizer=keras.optimizers.Adam(self.learning_rate),metrics=["accuracy"])
+        #smileModel.compile(loss = keras.losses.categorical_crossentropy,optimizer=keras.optimizers.Adamax(self.learning_rate=0.002, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0),metrics=["accuracy"])
+        faceRecognitionModel.summary()
+
+        X_test = self.dataset.test_dataset_images
+        smiling = self.dataset.test_dataset["Smiling"].as_matrix().astype(np.uint8)
+        y_test = np.eye(2)[smiling]
+        if self.resume:
+            checkPoint = self.resume_model()
+            callbacks = [checkPoint]
+        else:
+            callbacks = [CustomModelCheckPoint()]
+
+        faceRecognitionModel.fit_generator(self.dataset.generator(batch_size=self.batch_size),epochs = self.epochs,callbacks = callbacks,steps_per_epoch=self.steps_per_epoch,validation_data=(X_test,y_test),verbose=1)
+        with open("logs/logs.txt","a+") as log_file:
+            score = faceRecognitionModel.evaluate(X_test,y_test)
+            log_file.write(str(score))
+        self.model.save_weights("models/"+self.large_model_name+".h5")
+        faceRecognitionModel.save_weights("models/"+self.small_model_name+".h5")
+
     def train_emotion_network(self):
         if not self.dataset.dataset_loaded:
             self.dataset.load_dataset()
+
 
     def save_model(self,model,score):
         self.model.model.save_weights("models/"+self.config.large_model_name+".h5")

@@ -7,7 +7,7 @@ from keras import backend as K
 
 from sklearn.model_selection import train_test_split
 import json
-#from nets.layers import RoundLayer
+from nets.layers import RoundLayer
 
 class AllInOneModel(object):
     def __init__(self,input_shape):
@@ -161,7 +161,7 @@ class AllInOneModel(object):
         all_lists = ["detection_probablity","kpoints_visibility","key_points","pose","smile",
             "gender_probablity","age_estimation","face_reco","is_young","eye_glasses",
             "mouse_slightly_open","emotion_recognition2"]
-        assert type(labels) == list, " argument should be list type"
+        assert type(labels) == list, "argument should be list type"
         assert not(labels is None or len(labels)==0), "Labels should not be empty"
         assert set(labels).issubset(all_lists), str(labels) + "contains lists which are not in" + str(all_lists)
 
