@@ -10,4 +10,4 @@ tests/*
 train/*
 util/*
 demo/*
-
+allinonemodels/freeze2.h5
