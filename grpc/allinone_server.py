@@ -11,6 +11,7 @@ import pandas as pd
 import dlib
 import sys
 
+
 import all_in_one_pb2
 import all_in_one_pb2_grpc
 from demo import load_model, selective_search_demo
@@ -30,7 +31,7 @@ def serve():
     all_in_one_pb2_grpc.add_AllInOneServicer_to_server(Greeter(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
-    model  = load_model("/home/samuel/projects/All-In-One/models/allinone.json","/home/samuel/projects/All-In-One/models/freeze2.h5",["age_estimation","smile", "gender_probablity"])
+    model  = load_model("/home/samuel/projects/All-In-One/allinonemodels/allinone.json","/home/samuel/projects/All-In-One/allinonemodels/freeze2.h5",["age_estimation","smile", "gender_probablity"])
     model.summary()
     detector = dlib.get_frontal_face_detector()
     #image demo
@@ -45,7 +46,7 @@ def serve():
         server.stop(0)
 
 if __name__ == '__main__':
-    model  = load_model("/home/samuel/projects/All-In-One/models/allinone.json","/home/samuel/projects/All-In-One/models/freeze2.h5",["age_estimation","smile", "gender_probablity"])
+    model  = load_model("/home/samuel/projects/All-In-One/allinonemodels/allinone.json","/home/samuel/projects/All-In-One/allinonemodels/freeze2.h5",["age_estimation","smile", "gender_probablity"])
     model.summary()
     detector = dlib.get_frontal_face_detector()
     #image demo

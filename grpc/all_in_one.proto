@@ -2,14 +2,10 @@ syntax = "proto3";
 
 message FaceAlignmentHeader {
     repeated BoundingBox   source_bboxes = 1;
-    // DLib can't currently allow arbitrary alignments
-    //repeated FaceLandmarks source = 2;
-    //FaceLandmarks target = 3;
 }
 
 service AllInOne {
 	rpc AllInOne(AllInOneRequest) returns (AllInOneResponse){}
-	//rpc AlignFace(stream FaceAlignmentRequest) returns (stream FaceAlignmentResponse){}
 }
 
 message AllInOneRequest {

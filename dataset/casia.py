@@ -174,6 +174,7 @@ class CasiaDataset(Dataset):
         return overlapArea
 
     def rect_union(self,rect1,rect2):
+    def rect_union(self,rect1,rect2):
 
         assert rect1.shape == (4,) , "rect1 shape should be (4,) and it is "+str(rect1.shape)
         assert rect2.shape == (4,) , "rect2 shape should be (4,) and it is "+str(rect2.shape)

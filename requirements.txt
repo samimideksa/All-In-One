@@ -1,0 +1,8 @@
+keras
+Tensorflow
+sklearn
+pandas
+opencv-python   
+dlib
+grpcio
+grpcio_tools

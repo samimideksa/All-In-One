@@ -14,6 +14,7 @@ from test import pre_calculated_faces
 import grpc
 from demo import load_model, selective_search_demo
 from demo.main import images_demo, video_demo, process_video, webcam_demo, video_demo
+
 import all_in_one_pb2
 import all_in_one_pb2_grpc
 
@@ -96,7 +97,7 @@ def run():
 if __name__ == '__main__':
     #imagetopy('adele_2016.jpg', 'decoded1.py')
     #pytoimage('decoded')
-    model  = load_model("/home/samuel/projects/All-In-One/models/allinone.json","/home/samuel/projects/All-In-One/models/freeze2.h5",["age_estimation","smile", "gender_probablity"])
+    model  = load_model("/home/samuel/projects/All-In-One/allinonemodels/allinone.json","/home/samuel/projects/All-In-One/allinonemodels/freeze2.h5",["age_estimation","smile", "gender_probablity"])
     model.summary()
     detector = dlib.get_frontal_face_detector()
     #image demo
