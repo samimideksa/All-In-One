@@ -17,4 +17,4 @@ grpc/test/test_videos/
 grpc/*.jpg
 grpc/*.png
 models/
-allinonemodels/*
+allinonemodels/*allinonemodels/freeze2.h5
