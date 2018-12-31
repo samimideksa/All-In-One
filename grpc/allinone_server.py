@@ -9,13 +9,10 @@ import cv2
 import numpy as np
 import pandas as pd
 import dlib
-import sys
-
-
-import all_in_one_pb2
-import all_in_one_pb2_grpc
+from grpc.all_in_one_pb2 import all_in_one_pb2
+from grpc import all_in_one_pb2_grpc
 from demo import load_model, selective_search_demo
-from demo.main import images_demo, video_demo, process_video, webcam_demo, video_demo
+from grpc.demo.main import images_demo, video_demo, process_video, webcam_demo, video_demo
 import sys
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
