@@ -26,18 +26,6 @@ from grpc.all_in_one_pb2 import ImageRGB, BoundingBox, Point2D, FaceLandmarks, F
 
 image_data = None
 
-"""
-def load_model(model_json_path, model_h5_path, layer_names):
-    with open(model_json_path, "r") as json_file:
-        model = model_from_json(json_file.read())
-        model.load_weights(model_h5_path)
-        layer_output = []
-        for lname in layer_names:
-            layer_output += [get_layer(model.name).output]
-        output = Model(inputs=model.inputs, output=layer_output)
-        return output
-"""
-
 def readinchunks(file_name, source_bboxes, chunk_size=1024*64):
     boxes = [BoundingBox(**b) for b in source_bboxes]
     header = grpc.all_in_one_pb2.FaceAlignmentHeader(

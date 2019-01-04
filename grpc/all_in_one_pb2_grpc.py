@@ -2,9 +2,9 @@
 import sys
 sys.path.insert(0, 'grpc/')
 import grpc
-import all_in_one_pb2 as all__in__one__pb2
+from grpc import all_in_one_pb2 as all__in__one__pb2
 
-
+    
 class AllInOneStub(object):
   # missing associated documentation comment in .proto file
   pass

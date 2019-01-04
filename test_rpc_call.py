@@ -12,8 +12,8 @@ import script
 import unittest
 import difflib
 
-from all_in_one_pb2_grpc import AllInOneStub
-from all_in_one_pb2 import AllInOneResponse, BoundingBox, AllInOneRequest
+from grpc.all_in_one_pb2_grpc import AllInOneStub
+from grpc.all_in_one_pb2 import AllInOneResponse, BoundingBox, AllInOneRequest
 
 
 class TestSuiteGrpc(unittest.TestCase):
