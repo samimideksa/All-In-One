@@ -13,16 +13,16 @@ import dlib
 from test import pre_calculated_faces
 import grpc
 from demo import load_model, selective_search_demo
-from demo.main import images_demo, video_demo, process_video, webcam_demo, video_demo
+from grpc.demo.main import images_demo, video_demo, process_video, webcam_demo, video_demo
 
-import all_in_one_pb2
-import all_in_one_pb2_grpc
+import grpc.all_in_one_pb2
+import grpc.all_in_one_pb2_grpc
 
 import sys
 import numpy as np
 
 
-from all_in_one_pb2 import ImageRGB, BoundingBox, Point2D, FaceLandmarks, FaceDetections
+from grpc.all_in_one_pb2 import ImageRGB, BoundingBox, Point2D, FaceLandmarks, FaceDetections
 
 image_data = None
 
@@ -40,17 +40,17 @@ def load_model(model_json_path, model_h5_path, layer_names):
 
 def readinchunks(file_name, source_bboxes, chunk_size=1024*64):
     boxes = [BoundingBox(**b) for b in source_bboxes]
-    header = all_in_one_pb2.FaceAlignmentHeader(
+    header = grpc.all_in_one_pb2.FaceAlignmentHeader(
         source_bboxes=boxes,
     )
 
-    yield all_in_one_pb2.FaceAlignmentRequest(header=header)
+    yield grpc.all_in_one_pb2.FaceAlignmentRequest(header=header)
 
     with open(file_name, 'rb'):
         while True:
-            chunk = infile.read(chunk_size)
+            chunk = grpc.infile.read(chunk_size)
             if chunk:
-                yield all_in_one_pb2.FaceAlignmentRequest(image_chunk=ImageRGB(content=chunk))
+                yield grpc.all_in_one_pb2.FaceAlignmentRequest(image_chunk=ImageRGB(content=chunk))
             else:
                 return
 
@@ -84,14 +84,14 @@ def pytoimage(pyfile):
 
 def run():
     channel = grpc.insecure_channel('localhost:50051')
-    stub = all_in_one_pb2_grpc.AllInOneStub(channel)
+    stub = grpc.all_in_one_pb2_grpc.AllInOneStub(channel)
 
     #img_list_data = align_face(stub, r'test/test_images', source_bboxes=pre_calculated_faces['adele_2016.jpg'],)
     #for i in range(0, len(pre_calculated_faces['adele_2016.jpg'])):
     #    with open('test_align_%d.jpg' % i, 'wb') as f:
     #        f.write(img_list_data[i])
 
-    response = stub.AllInOne(all_in_one_pb2.AllInOneRequest(image='Adele'))
+    response = stub.AllInOne(grpc.all_in_one_pb2.AllInOneRequest(image='Adele'))
     print("Greeter client received: " + str(response.gender))
 
 if __name__ == '__main__':

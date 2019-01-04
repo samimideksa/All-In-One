@@ -21,19 +21,20 @@ COPY requirements.txt /tmp
 
 WORKDIR /tmp
 
-# RUN python3.6 -m pip install -U pip
+# 
 # RUN python3.6 -m pip install -r requirements.txt
 
 RUN curl "https://bootstrap.pypa.io/get-pip.py" | python3.6
 
 RUN pip install --upgrade pip
+RUN pip install --upgrade requests
 RUN pip install --upgrade setuptools
 RUN python3.6 -m pip install -r requirements.txt
 
 COPY . /All-In-One
 WORKDIR /All-In-One
-
-RUN python google_drive.py 1Bjm8KfNbHs9XuCOxUr9db6WYtI_Am6q7 ./weights.h5
+RUN python3.6 -m pip install -U pip
+RUN git clone https://github.com/circulosmeos/gdown.pl && cd gdown.pl && ./gdown.pl https://drive.google.com/file/d/11v9D6lyMhTlzGPMXTia_iUzv-3AdEGK5/view?usp=sharing model.tar.xz && tar xvf model.tar.xz && cd model
 EXPOSE 50051
 
 RUN cd grpc && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. all_in_one.proto

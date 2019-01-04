@@ -1,10 +1,11 @@
+![singnetlogo](Images/singnet-logo.jpg?raw=true 'SingularityNET')
 # All-In-One
 All in one [paper](https://arxiv.org/abs/1611.00851) implementation
 ## Getting started
 All in one convolutional network for face analysis presents a multipurpose algorithm for simultaneous face detection, face alignment, pose estimation, gender recognition, smile detection, age estimation and face recognition using a single convolutional neural network(CNN).
 ## Prerequisites
 The project can be run by installing conda virtual environment with python=3.6 and installing dependencies using pip. Inside the projects directory run the following commands.
-* *`conda create -n <environment_name> python=3.6`.* <br/>After creating the environment use the following commands to install dependacies.
+* *`conda create -n <environment_name> python=3.6`.* <br/>After creating the environment use the following commands to install dependancies.
 * *`pip install keras`*
 * *`pip install tensorflow`*
 * *`pip install sklearn`*

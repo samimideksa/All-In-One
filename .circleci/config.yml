@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: allinone:latest
+    steps:
+      - checkout
+      - run:
+          name: Install Requests
+          command: python3.6 -m pip install requests
+      - run:
+          name: Get Models
+          command: git clone https://github.com/circulosmeos/gdown.pl && cd gdown.pl && ./gdown.pl https://drive.google.com/file/d/11v9D6lyMhTlzGPMXTia_iUzv-3AdEGK5/view?usp=sharing model.tar.xz && tar xvf model.tar.xz && cd model
+      - run:
+          name: install GRPC
+          command: python3.6 -m pip install grpcio grpcio-tools
+      - run:
+          name: Generate GRPC files
+          command:  cd grpc && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. grpc/all_in_one.proto
+      - run:
+          name: Run Tests
+          command: python3.6 -m unittest test_rpc_call.TestSuiteGrpc
+
+          
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
