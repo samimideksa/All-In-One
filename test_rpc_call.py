@@ -138,7 +138,4 @@ if __name__ == '__main__':
 
     suite.addTest(TestSuiteGrpc("test_grpc_call"))
 
-    # suite.addTest(TestSuiteDeployed("test_deployed_service"))
-
-    # suite.addTest(TestSuiteDeployed("test_mpe_call"))
     unittest.main()

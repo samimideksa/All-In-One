@@ -30,6 +30,23 @@ The following code snippet is bash command to train the network in aflw dataset 
 python -m train --dataset aflw --images_path /path-to-dataset-images/ \
     --label detection --batch_size 100 --steps 500  --ol output-of-large-model --os output-of-small-model --epochs 10;
 ```
+### Using docker with GPU
+If you have (nvidea-docker2)[] installed, we have Dockerfile.gpu which we can use to build your image.
+```
+docker build --file Dockerfile.gpu . -t allinone:latest
+```
+### Using docker with CPU
+You can also build an image which only has CPU dependancies to evaluate the models provided.
+```
+docker build --file Dockerfile . -t allinone:latest
+```
+### How to use the docker image
+We have a port exposed in our configuraiton for a container: 50051 for the grpc endpoint. To run with grpc endpoint available one can call:
+```
+# This starts the grpc endpoint alone.
+docker run -it --rm -p 50051:50051 allinone:latest 
+
+```
 ### Options
 * *--images_path - Path to dataset images*
 * *--dataset - Type of dataset to train the model. This could be imdb, wiki, celeba, yale, ck+, aflw. The layers that are going to be trained also depends on this choice.*
