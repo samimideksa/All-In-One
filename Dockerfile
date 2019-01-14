@@ -29,6 +29,7 @@ RUN curl "https://bootstrap.pypa.io/get-pip.py" | python3.6
 RUN pip install --upgrade pip
 RUN pip install --upgrade requests
 RUN pip install --upgrade setuptools
+RUN pip install --upgrade gdown
 RUN python3.6 -m pip install -r requirements.txt
 
 COPY . /All-In-One
