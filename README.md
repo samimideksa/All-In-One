@@ -31,7 +31,7 @@ python -m train --dataset aflw --images_path /path-to-dataset-images/ \
     --label detection --batch_size 100 --steps 500  --ol output-of-large-model --os output-of-small-model --epochs 10;
 ```
 ### Using docker with GPU
-If you have (nvidea-docker2)[https://github.com/NVIDIA/nvidia-docker] installed, we have Dockerfile.gpu which we can use to build your image.
+If you have [nvidea-docker2](https://github.com/NVIDIA/nvidia-docker) installed, we have Dockerfile.gpu which we can use to build your image.
 ```
 docker build --file Dockerfile.gpu . -t allinone:latest
 ```
