@@ -10,7 +10,7 @@ jobs:
           command: python3.6 -m pip install requests
       - run:
           name: Get Models
-          command: git clone https://github.com/circulosmeos/gdown.pl && cd gdown.pl && ./gdown.pl https://drive.google.com/file/d/11v9D6lyMhTlzGPMXTia_iUzv-3AdEGK5/view?usp=sharing model.tar.xz && tar xvf model.tar.xz && cd model
+          command: cd allinonemodels && wget http://144.76.153.5/aio_model/freeze2.h5
       - run:
           name: install GRPC
           command: python3.6 -m pip install grpcio grpcio-tools
