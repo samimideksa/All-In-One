@@ -5,6 +5,8 @@ import numpy as np
 import os
 import argparse
 from keras.models import Model
+from PIL import Image
+import numpy as np
 
 def get_cmd_args():
     parser = argparse.ArgumentParser()
@@ -50,6 +52,7 @@ def images_demo(model,images_dir,detector):
             cv2.putText(image, "Gender: "+gender, (face.left() + 10, face.top() + 30), cv2.FONT_HERSHEY_DUPLEX, 0.4,
                     (255,0,0))
         cv2.imshow("image",image)
+        cv2.imwrite('adele.png',image)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
@@ -104,15 +107,15 @@ def video_demo(model,video_path,detector):
     process_video(model,video_path,detector)
 
 def main():
-    #print ("loading model")
-    #model  = load_model("/home/samuel/Documents/All-In-One/models/allinone.json","/home/samuel/Documents/All-In-One/models/allinone.h5",["age_estimation","smile", "gender_probablity"])
-    #model.summary()
-    #print ("loaded model")
-    #detector = dlib.get_frontal_face_detector()
-    #images_demo(model,"/home/samuel/Documents/All-In-One/test-images/",detector)
-    #webcam_demo(model,detector)
-    #video_demo(model,"/home/samuel/Documents/All-In-One/test-videos/75Emotions.mp4",detector)
-    selective_search_demo()
+    print ("loading model")
+    model  = load_model("/home/samuel/projects/All-In-One/allinonemodels/allinone.json","/home/samuel/projects/All-In-One/allinonemodels/freeze2.h5",["age_estimation","smile", "gender_probablity"])
+    model.summary()
+    print ("loaded model")
+    detector = dlib.get_frontal_face_detector()
+    images_demo(model,"/home/samuel/projects/All-In-One/Images/",detector)
+    # webcam_demo(model,detector)
+    # video_demo(model,"/home/samuel/Documents/All-In-One/test-videos/75Emotions.mp4",detector)
+    # selective_search_demo()
 
 if __name__ == "__main__":
     main()

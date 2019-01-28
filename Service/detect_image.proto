@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message InputImage {
+    bytes Image = 1;
+}
+
+message OutputImage {
+    bytes Image = 1;
+}
+
+service ImageDemo {
+    rpc DetectImage(InputImage) returns (OutputImage) {}
+}
