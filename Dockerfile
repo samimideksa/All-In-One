@@ -29,7 +29,6 @@ RUN curl "https://bootstrap.pypa.io/get-pip.py" | python3.6
 RUN pip install --upgrade pip
 RUN pip install --upgrade requests
 RUN pip install --upgrade setuptools
-RUN pip install --upgrade gdown
 RUN python3.6 -m pip install -r requirements.txt
 
 COPY . /All-In-One
@@ -38,6 +37,6 @@ RUN python3.6 -m pip install -U pip
 RUN cd allinonemodels && wget http://144.76.153.5/aio_model/freeze2.h5
 EXPOSE 50051
 
-RUN cd grpc && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. all_in_one.proto
+RUN cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. detect_image.proto
 
-CMD ["python3.6", "grpc/allinone_server.py"]
+CMD ["python3.6", "Service/server.py"]
