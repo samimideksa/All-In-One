@@ -5,16 +5,12 @@ from client import ClientTest
 from server import *
 from PIL import Image
 import unittest
-<<<<<<< HEAD
 import numpy as np
 import subprocess
-=======
 import difflib
 
 from all_in_one_pb2_grpc import AllInOneStub
 from all_in_one_pb2 import AllInOneResponse, BoundingBox, AllInOneRequest
-
->>>>>>> 87a1d2a891721862e924afb4cb7b5f92bb84e0de
 
 class TestSuiteGrpc(unittest.TestCase):
     def setUp(self):
@@ -32,16 +28,8 @@ class TestSuiteGrpc(unittest.TestCase):
         img_expected = np.asarray(Image.open("Images/adele_predicted.png")).convert('L')
         assert (img_res == img_expected).all()
 
-    # def tearDown(self):
-    #     # self.server = Server()
-    #     self.server.stopserver()
-
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(TestSuiteGrpc("test_grpc_call"))
-<<<<<<< HEAD
     unittest.main()
-=======
 
-    unittest.main()
->>>>>>> 87a1d2a891721862e924afb4cb7b5f92bb84e0de
