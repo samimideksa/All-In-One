@@ -16,7 +16,7 @@ jobs:
           command: python3.6 -m pip install grpcio grpcio-tools
       - run:
           name: Generate GRPC files
-          command:  cd grpc && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. all_in_one.proto
+          command:  cd Service && python3.6 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. detect_image.proto
       - run:
           name: Run Tests
           command: python3.6 -m unittest test_rpc_call.TestSuiteGrpc
